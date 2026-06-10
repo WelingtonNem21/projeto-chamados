@@ -60,6 +60,23 @@ $null > database/database.sqlite
 # Criar tabelas e popular com dados iniciais
 php artisan migrate --seed
 
+Obs 
+Caso ocorra um erro ao executar o comando:
+
+php artisan migrate --seed
+
+remova o arquivo do banco SQLite:
+
+Remove-Item database/database.sqlite
+
+Em seguida, crie o arquivo novamente:
+
+New-Item database/database.sqlite -ItemType File
+
+Depois, execute novamente:
+
+php artisan migrate --seed
+
 # Subir o servidor
 php artisan serve
 ```
