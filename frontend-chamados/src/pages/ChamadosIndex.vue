@@ -34,7 +34,7 @@ async function carregarResponsaveis() {
   try {
     const { data } = await api.get('/responsaveis')
     responsaveis.value = data.data ?? data
-  } catch { /* silencioso */ }
+  } catch {}
 }
 
 async function excluir(id) {

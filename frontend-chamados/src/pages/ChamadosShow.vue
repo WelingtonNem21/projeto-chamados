@@ -43,7 +43,6 @@ onMounted(carregar)
     <div v-else-if="erro" class="text-center py-16 text-red-500">{{ erro }}</div>
 
     <div v-else-if="chamado">
-      <!-- Cabeçalho -->
       <div class="flex items-start justify-between mb-6">
         <div>
           <h1 class="text-2xl font-bold text-gray-900 flex items-center gap-3 flex-wrap">
@@ -67,7 +66,6 @@ onMounted(carregar)
         </div>
       </div>
 
-      <!-- Aviso: chamado fechado -->
       <div v-if="chamado.status === 'fechado'"
         class="mb-6 flex items-center gap-3 p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm">
         <span class="text-lg">🔒</span>
@@ -77,9 +75,7 @@ onMounted(carregar)
         </div>
       </div>
 
-      <!-- Conteúdo principal -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Descrição -->
         <div class="lg:col-span-2">
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
             <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Descrição do Problema</h2>
@@ -89,7 +85,6 @@ onMounted(carregar)
           </div>
         </div>
 
-        <!-- Detalhes -->
         <div class="space-y-4">
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5">
             <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">Detalhes do Chamado</h2>

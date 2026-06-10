@@ -93,7 +93,6 @@ onMounted(carregar)
     <div v-if="carregando" class="text-center py-16 text-gray-400">Carregando...</div>
 
     <div v-else>
-      <!-- Cabeçalho -->
       <div class="flex items-center gap-3 mb-6">
         <RouterLink :to="`/chamados/${id}`" class="text-sm text-gray-500 hover:text-gray-700">←</RouterLink>
         <h1 class="text-xl font-bold text-gray-900">Editar Chamado #{{ id }}</h1>
@@ -101,7 +100,6 @@ onMounted(carregar)
         <BadgePrioridade v-if="chamado" :prioridade="chamado.prioridade" />
       </div>
 
-      <!-- Aviso: chamado fechado -->
       <div v-if="chamado?.status === 'fechado'"
         class="mb-6 flex items-center gap-3 p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm">
         <span class="text-lg">🔒</span>
@@ -109,7 +107,6 @@ onMounted(carregar)
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <!-- Formulário -->
         <div class="lg:col-span-2">
           <div :class="['bg-white rounded-lg shadow-sm border border-gray-200 p-6', chamado?.status === 'fechado' ? 'opacity-60 pointer-events-none select-none' : '']">
             <div v-if="erros.geral" class="mb-4 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-600">
@@ -117,7 +114,6 @@ onMounted(carregar)
             </div>
 
             <form @submit.prevent="salvar" class="space-y-5">
-              <!-- Título -->
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
                   Título <span class="text-red-500">*</span>
@@ -131,7 +127,6 @@ onMounted(carregar)
                 <p v-if="erros.titulo" class="mt-1 text-xs text-red-600">{{ erros.titulo }}</p>
               </div>
 
-              <!-- Descrição -->
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
                 <textarea
@@ -141,7 +136,6 @@ onMounted(carregar)
                 />
               </div>
 
-              <!-- Prioridade + Status -->
               <div class="grid grid-cols-2 gap-4">
                 <div>
                   <label class="block text-sm font-medium text-gray-700 mb-1">
@@ -176,7 +170,6 @@ onMounted(carregar)
                 </div>
               </div>
 
-              <!-- Atribuição -->
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Atribuição</label>
                 <SelectResponsavel
@@ -187,7 +180,6 @@ onMounted(carregar)
                 />
               </div>
 
-              <!-- Botões -->
               <div class="flex justify-end gap-3 pt-2">
                 <RouterLink :to="`/chamados/${id}`"
                   class="px-4 py-2 text-sm text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors">
@@ -204,7 +196,6 @@ onMounted(carregar)
           </div>
         </div>
 
-        <!-- Sidebar -->
         <div class="space-y-4" v-if="chamado">
           <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-5">
             <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-4">Detalhes do Chamado</h2>
