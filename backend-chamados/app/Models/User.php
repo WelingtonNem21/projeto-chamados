@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -45,5 +46,24 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Todos os chamados atribuídos a este responsável.
+     * FK explícita porque o campo chama `responsavel_id`, não `user_id`.
+     */
+    public function chamados(): HasMany
+    {
+        return $this->hasMany(Chamado::class, 'responsavel_id');
+    }
+
+    /**
+     * Apenas chamados ainda não concluídos deste responsável.
+     * Usado pelo DistribuicaoService para calcular a carga de trabalho atual.
+     */
+    public function chamadosEmAberto(): HasMany
+    {
+        return $this->hasMany(Chamado::class, 'responsavel_id')
+                    ->whereIn('status', ['aberto', 'em_andamento']);
     }
 }
